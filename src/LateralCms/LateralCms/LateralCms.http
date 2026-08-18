@@ -1,0 +1,6 @@
+@LateralCms_HostAddress = http://localhost:5205
+
+GET {{LateralCms_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
