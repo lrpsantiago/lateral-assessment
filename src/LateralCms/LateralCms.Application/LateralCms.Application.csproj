@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\LateralCms.Domain.csproj" />
+    <ProjectReference Include="..\LateralCms.Domain\LateralCms.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,6 @@
 using LateralCms.Application.Interfaces.Persistence;
 using LateralCms.Domain.Entities;
 using LateralCms.Domain.Enumerations;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace LateralCms.Application.Services;
 
@@ -51,7 +50,7 @@ public sealed class CmsEventProcessor : ICmsEventProcessor
 
     private async Task ProcessPendingEventAsync(CmsEvent cmsEvent, DateTime processStart, CancellationToken cancellationToken)
     {
-        await using IDbContextTransaction transaction =
+        await using var transaction =
             await _unitOfWork.BeginTransactionAsync(cancellationToken);
 
         try
@@ -87,7 +86,7 @@ public sealed class CmsEventProcessor : ICmsEventProcessor
 
     private async Task MarkFailedAsync(Guid eventId, DateTime processStart, Exception exception)
     {
-        CmsEvent? cmsEvent = await LoadEventAsync(eventId, CancellationToken.None);
+        var cmsEvent = await LoadEventAsync(eventId, CancellationToken.None);
 
         if (cmsEvent is null)
         {

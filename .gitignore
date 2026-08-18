@@ -43,6 +43,7 @@ ScaffoldingReadMe.txt
 ~$*
 *~
 CodeCoverage/
+*.vsidx
 
 # Local SQLite databases
 *.db

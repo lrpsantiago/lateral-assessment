@@ -25,10 +25,10 @@ public sealed class CmsEventBatchWorker : BackgroundService
         {
             try
             {
-                await using AsyncServiceScope scope =
+                await using var scope =
                     _scopeFactory.CreateAsyncScope();
 
-                ICmsEventProcessor processor = scope.ServiceProvider
+                var processor = scope.ServiceProvider
                     .GetRequiredService<ICmsEventProcessor>();
 
                 await processor.ProcessAsync(eventId, stoppingToken);

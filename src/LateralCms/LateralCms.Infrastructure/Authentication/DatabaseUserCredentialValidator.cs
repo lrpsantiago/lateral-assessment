@@ -18,7 +18,7 @@ public sealed class DatabaseUserCredentialValidator : IUserCredentialValidator
     public async Task<AuthenticatedUser?> ValidateAsync(string username, string password,
         CancellationToken cancellationToken = default)
     {
-        Domain.Entities.User? user = await _unitOfWork.Users
+        var user = await _unitOfWork.Users
             .Query()
             .Include(candidate => candidate.Role)
             .SingleOrDefaultAsync(x => x.Username == username, cancellationToken);
@@ -28,7 +28,7 @@ public sealed class DatabaseUserCredentialValidator : IUserCredentialValidator
             return null;
         }
 
-        PasswordHashVerificationResult verificationResult = _passwordHashService.VerifyPassword(user.PasswordHash, password);
+        var verificationResult = _passwordHashService.VerifyPassword(user.PasswordHash, password);
 
         if (verificationResult == PasswordHashVerificationResult.Failed)
         {

@@ -24,7 +24,7 @@ public class EntityController : LateralCmsController
     [HttpGet]
     public async Task<IActionResult> GetAllEntitiesAsync()
     {
-        IEnumerable<CmsEntityOutput> entities = await _entityService.GetAllEntitiesAsync();
+        var entities = await _entityService.GetAllEntitiesAsync();
 
         return Ok(entities);
     }
@@ -33,7 +33,7 @@ public class EntityController : LateralCmsController
     [HttpGet("published")]
     public async Task<IActionResult> GetPublishedEntitiesAsync()
     {
-        IEnumerable<CmsEntityOutput> publishedEntities = await _entityService.GetPublishedEntitiesAsync();
+        var publishedEntities = await _entityService.GetPublishedEntitiesAsync();
 
         return Ok(publishedEntities);
     }
@@ -41,8 +41,8 @@ public class EntityController : LateralCmsController
     [HttpPost]
     public async Task<IActionResult> AddEntityAsync([FromBody] AddCmsEntityRequest request)
     {
-        CmsEntityInput input = _mapper.Map<CmsEntityInput>(request);
-        CmsEntityOutput output = await _entityService.AddEntityAsync(input);
+        var input = _mapper.Map<CmsEntityInput>(request);
+        var output = await _entityService.AddEntityAsync(input);
 
         return Ok(output);
     }
@@ -50,8 +50,8 @@ public class EntityController : LateralCmsController
     [HttpPut]
     public async Task<IActionResult> UpdateEntityAsync([FromBody] UpdateCmsEntityRequest request)
     {
-        EntityPayloadUpdateInput input = _mapper.Map<EntityPayloadUpdateInput>(request);
-        CmsEntityOutput output = await _entityService.UpdateEntityAsync(input);
+        var input = _mapper.Map<EntityPayloadUpdateInput>(request);
+        var output = await _entityService.UpdateEntityAsync(input);
 
         return Ok(output);
     }

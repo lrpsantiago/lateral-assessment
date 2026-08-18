@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\LateralCms.Infrastructure.csproj" />
     <ProjectReference Include="..\LateralCms.Application\LateralCms.Application.csproj" />
+    <ProjectReference Include="..\LateralCms.Infrastructure\LateralCms.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

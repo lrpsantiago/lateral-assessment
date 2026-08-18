@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -40,7 +40,7 @@ builder.Services.AddHostedService<CmsEventBatchWorker>();
 
 InitializeDatabase(builder);
 
-WebApplication app = builder.Build();
+var app = builder.Build();
 
 await ApplyDatabaseMigrationAsync(app);
 
@@ -106,9 +106,9 @@ static void InitializeDatabase(WebApplicationBuilder builder)
 
 static async Task ApplyDatabaseMigrationAsync(WebApplication app)
 {
-    await using AsyncServiceScope scope = app.Services.CreateAsyncScope();
-    LateralCmsContext context = scope.ServiceProvider.GetRequiredService<LateralCmsContext>();
-    ILogger logger = scope.ServiceProvider
+    await using var scope = app.Services.CreateAsyncScope();
+    var context = scope.ServiceProvider.GetRequiredService<LateralCmsContext>();
+    var logger = scope.ServiceProvider
         .GetRequiredService<ILoggerFactory>()
         .CreateLogger("DatabaseMigration");
 

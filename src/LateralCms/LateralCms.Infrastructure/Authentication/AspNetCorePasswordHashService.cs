@@ -18,7 +18,7 @@ public sealed class AspNetCorePasswordHashService : IPasswordHashService
 
     public PasswordHashVerificationResult VerifyPassword(string passwordHash, string providedPassword)
     {
-        PasswordVerificationResult result = _passwordHasher.VerifyHashedPassword(
+        var result = _passwordHasher.VerifyHashedPassword(
             new User(),
             passwordHash,
             providedPassword);

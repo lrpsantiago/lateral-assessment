@@ -20,7 +20,7 @@ public class CmsEntityService : ICmsEntityService
 
     public async Task<IEnumerable<CmsEntityOutput>> GetAllEntitiesAsync(CancellationToken cancellationToken = default)
     {
-        List<CmsEntity> entities = await _unitOfWork.CmsEntities
+        var entities = await _unitOfWork.CmsEntities
             .Query()
             .AsNoTracking()
             .Include(x => x.Versions)
@@ -28,16 +28,16 @@ public class CmsEntityService : ICmsEntityService
 
         var resultList = new List<CmsEntityOutput>();
 
-        foreach (CmsEntity? e in entities)
+        foreach (var e in entities)
         {
             if (e.Versions == null)
             {
                 continue;
             }
 
-            foreach (CmsEntityVersion v in e.Versions)
+            foreach (var v in e.Versions)
             {
-                CmsEntityOutput output = CreateEntityOutput(e, v);
+                var output = CreateEntityOutput(e, v);
 
                 resultList.Add(output);
             }
@@ -48,7 +48,7 @@ public class CmsEntityService : ICmsEntityService
 
     public async Task<IEnumerable<CmsEntityOutput>> GetPublishedEntitiesAsync(CancellationToken cancellationToken = default)
     {
-        List<CmsEntity> entities = await _unitOfWork.CmsEntities
+        var entities = await _unitOfWork.CmsEntities
             .Query()
             .AsNoTracking()
             .Where(x => x.PublishedVersionId != null)
@@ -57,9 +57,9 @@ public class CmsEntityService : ICmsEntityService
 
         var resultList = new List<CmsEntityOutput>();
 
-        foreach (CmsEntity? e in entities)
+        foreach (var e in entities)
         {
-            CmsEntityOutput output = CreateEntityOutput(e, e.PublishedVersion!);
+            var output = CreateEntityOutput(e, e.PublishedVersion!);
 
             resultList.Add(output);
         }
@@ -118,11 +118,11 @@ public class CmsEntityService : ICmsEntityService
 
     public async Task<CmsEntityOutput> UpdateEntityAsync(EntityPayloadUpdateInput payloadUpdateInput, CancellationToken cancellationToken = default)
     {
-        CmsEntity? entity = await ValidateAndGetEntityWithVersionsAsync(payloadUpdateInput.EntityId, cancellationToken);
+        var entity = await ValidateAndGetEntityWithVersionsAsync(payloadUpdateInput.EntityId, cancellationToken);
 
         var latestVersion = entity!.Versions!.Max(x => x.Version);
         var newlyCreatedVersion = latestVersion + 1;
-        DateTime now = DateTime.UtcNow;
+        var now = DateTime.UtcNow;
 
         var version = new CmsEntityVersion
         {
@@ -143,7 +143,7 @@ public class CmsEntityService : ICmsEntityService
 
     public async Task DeleteEntityAsync(string? entityId, CancellationToken cancellationToken = default)
     {
-        CmsEntity? entity = await ValidateAndGetEntityAsync(entityId, cancellationToken);
+        var entity = await ValidateAndGetEntityAsync(entityId, cancellationToken);
 
         _unitOfWork.CmsEntities.Remove(entity!);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
@@ -151,7 +151,7 @@ public class CmsEntityService : ICmsEntityService
 
     public async Task PublishEntityAsync(string? entityId, int? version = null, CancellationToken cancellationToken = default)
     {
-        CmsEntity? entity = await ValidateAndGetEntityAsync(entityId, cancellationToken);
+        var entity = await ValidateAndGetEntityAsync(entityId, cancellationToken);
 
         var versionToPublish = version == null
             ? entity!.LatestVersionId
@@ -173,7 +173,7 @@ public class CmsEntityService : ICmsEntityService
 
     public async Task UnpublishEntityAsync(string? entityId, CancellationToken cancellationToken = default)
     {
-        CmsEntity? entity = await ValidateAndGetEntityAsync(entityId, cancellationToken);
+        var entity = await ValidateAndGetEntityAsync(entityId, cancellationToken);
 
         entity!.PublishedVersionId = null;
         entity!.UpdatedAt = DateTime.UtcNow;
@@ -203,7 +203,7 @@ public class CmsEntityService : ICmsEntityService
             throw new DomainException("The 'entityId' is required.");
         }
 
-        CmsEntity? entity = await _unitOfWork.CmsEntities
+        var entity = await _unitOfWork.CmsEntities
             .FirstOrDefaultAsync(x => x.Id == entityId, cancellationToken);
 
         if (entity == null)
@@ -222,7 +222,7 @@ public class CmsEntityService : ICmsEntityService
             throw new DomainException("The 'entityId' is required.");
         }
 
-        CmsEntity? entity = await _unitOfWork.CmsEntities
+        var entity = await _unitOfWork.CmsEntities
             .Query()
             .Include(x => x.Versions)
             .FirstOrDefaultAsync(x => x.Id == entityId, cancellationToken);

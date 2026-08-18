@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\LateralCms.Domain.csproj" />
     <ProjectReference Include="..\LateralCms.Application\LateralCms.Application.csproj" />
+    <ProjectReference Include="..\LateralCms.Domain\LateralCms.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

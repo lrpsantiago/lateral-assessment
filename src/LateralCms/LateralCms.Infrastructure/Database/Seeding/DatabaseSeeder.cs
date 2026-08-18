@@ -50,7 +50,7 @@ public static class DatabaseSeeder
             return;
         }
 
-        UserRole role = context.UserRoles.FirstOrDefault(x => x.Name!.Trim().ToLower() == AdminRole)
+        var role = context.UserRoles.FirstOrDefault(x => x.Name!.Trim().ToLower() == AdminRole)
             ?? throw new InvalidOperationException($"Role '{AdminRole}' not found.");
 
         var user = new User
@@ -76,7 +76,7 @@ public static class DatabaseSeeder
             return;
         }
 
-        UserRole role = context.UserRoles.FirstOrDefault(x => x.Name!.Trim().ToLower() == CmsRole)
+        var role = context.UserRoles.FirstOrDefault(x => x.Name!.Trim().ToLower() == CmsRole)
             ?? throw new InvalidOperationException($"Role '{CmsRole}' not found.");
 
         var user = new User

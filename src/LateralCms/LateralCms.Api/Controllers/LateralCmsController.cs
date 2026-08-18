@@ -9,37 +9,37 @@ public abstract class LateralCmsController : ControllerBase
 {
     public override OkObjectResult Ok(object? value)
     {
-        ResponseWrapper response = WrapResponse((int)HttpStatusCode.OK, value);
+        var response = WrapResponse((int)HttpStatusCode.OK, value);
         return base.Ok(response);
     }
 
     public override AcceptedResult Accepted(object? value)
     {
-        ResponseWrapper response = WrapResponse((int)HttpStatusCode.Accepted, value);
+        var response = WrapResponse((int)HttpStatusCode.Accepted, value);
         return base.Accepted(response);
     }
 
     public override NotFoundObjectResult NotFound(object? value)
     {
-        ResponseWrapper response = WrapResponse((int)HttpStatusCode.NotFound, value);
+        var response = WrapResponse((int)HttpStatusCode.NotFound, value);
         return base.NotFound(response);
     }
 
     public override BadRequestObjectResult BadRequest(object? value)
     {
-        ResponseWrapper response = WrapResponse((int)HttpStatusCode.BadRequest, value);
+        var response = WrapResponse((int)HttpStatusCode.BadRequest, value);
         return base.BadRequest(response);
     }
 
     public override UnprocessableEntityObjectResult UnprocessableEntity(object? value)
     {
-        ResponseWrapper response = WrapResponse((int)HttpStatusCode.UnprocessableEntity, value);
+        var response = WrapResponse((int)HttpStatusCode.UnprocessableEntity, value);
         return base.UnprocessableEntity(response);
     }
 
     public override ObjectResult StatusCode(int statusCode, object? value)
     {
-        ResponseWrapper response = WrapResponse(statusCode, value);
+        var response = WrapResponse(statusCode, value);
         return base.StatusCode(statusCode, response);
     }
 

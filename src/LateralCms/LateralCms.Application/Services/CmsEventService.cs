@@ -100,13 +100,13 @@ public sealed class CmsEventService : ICmsEventService
 
     private async Task HandleAddEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
     {
-        CmsEntityInput input = _mapper.Map<CmsEntityInput>(cmsEvent);
+        var input = _mapper.Map<CmsEntityInput>(cmsEvent);
         await _entityService.AddEntityAsync(input, cancellationToken);
     }
 
     private async Task HandleUpdateEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
     {
-        EntityPayloadUpdateInput input = _mapper.Map<EntityPayloadUpdateInput>(cmsEvent);
+        var input = _mapper.Map<EntityPayloadUpdateInput>(cmsEvent);
         await _entityService.UpdateEntityAsync(input, cancellationToken);
     }
 
