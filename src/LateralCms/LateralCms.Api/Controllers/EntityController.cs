@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LateralCms.Api.Controllers;
 
-[Authorize(Roles = "admin")]
+[Authorize(Roles = "admin,user")]
 [Route("api/[controller]")]
 [ApiController]
 public class EntityController : LateralCmsController
@@ -22,6 +22,7 @@ public class EntityController : LateralCmsController
     }
 
     [HttpGet]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> GetAllEntitiesAsync()
     {
         var entities = await _entityService.GetAllEntitiesAsync();
@@ -29,7 +30,6 @@ public class EntityController : LateralCmsController
         return Ok(entities);
     }
 
-    [Authorize(Roles = "admin,user")]
     [HttpGet("published")]
     public async Task<IActionResult> GetPublishedEntitiesAsync()
     {
@@ -39,6 +39,7 @@ public class EntityController : LateralCmsController
     }
 
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> AddEntityAsync([FromBody] AddCmsEntityRequest request)
     {
         var input = _mapper.Map<CmsEntityInput>(request);
@@ -48,6 +49,7 @@ public class EntityController : LateralCmsController
     }
 
     [HttpPut]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> UpdateEntityAsync([FromBody] UpdateCmsEntityRequest request)
     {
         var input = _mapper.Map<EntityPayloadUpdateInput>(request);
@@ -57,6 +59,7 @@ public class EntityController : LateralCmsController
     }
 
     [HttpDelete]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> DeleteEntityAsync([FromQuery] string? id)
     {
         await _entityService.DeleteEntityAsync(id);
@@ -65,6 +68,7 @@ public class EntityController : LateralCmsController
     }
 
     [HttpPatch("publish")]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> PublishEntityAsync([FromQuery] string? id, [FromQuery] int? version = null)
     {
         await _entityService.PublishEntityAsync(id, version);
@@ -73,6 +77,7 @@ public class EntityController : LateralCmsController
     }
 
     [HttpPatch("unpublish")]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> UnpublishEntityAsync([FromQuery] string? id)
     {
         await _entityService.UnpublishEntityAsync(id);

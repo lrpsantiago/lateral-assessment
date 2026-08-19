@@ -24,7 +24,8 @@ public class CmsController : LateralCmsController
     }
 
     [HttpPost("events")]
-    public async Task<IActionResult> PostEventsAsync([FromBody] PostCmsEventRequest[] events, CancellationToken cancellationToken)
+    public async Task<IActionResult> PostEventsAsync([FromBody] PostCmsEventRequest[] events,
+        CancellationToken cancellationToken)
     {
         if (events == null)
         {

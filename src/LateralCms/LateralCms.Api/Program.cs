@@ -1,5 +1,6 @@
 using LateralCms.Api.Authentication;
 using LateralCms.Api.BackgroundServices;
+using LateralCms.Api.Mappings;
 using LateralCms.Api.Middleware;
 using LateralCms.Application.Authentication;
 using LateralCms.Application.Interfaces.Persistence;
@@ -18,6 +19,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var config = TypeAdapterConfig.GlobalSettings;
+config.Scan(typeof(ApiMappingProfile).Assembly);
 
 builder.Services.AddControllers();
 builder.Services.AddMapster();
