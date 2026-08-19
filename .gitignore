@@ -44,6 +44,9 @@ ScaffoldingReadMe.txt
 *~
 CodeCoverage/
 *.vsidx
+*.v2
+*.bin
+*.suo
 
 # Local SQLite databases
 *.db
