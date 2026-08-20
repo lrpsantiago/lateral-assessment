@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.api\\backgroundservices\\cmseventworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|solutionrelative:lateralcms.api\\backgroundservices\\cmseventworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{434753FE-6DD5-4BF7-B078-629A250A9779}|LateralCms.Tests\\LateralCms.Tests.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.tests\\authentication\\basicauthenticationhandlertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{434753FE-6DD5-4BF7-B078-629A250A9779}|LateralCms.Tests\\LateralCms.Tests.csproj|solutionrelative:lateralcms.tests\\authentication\\basicauthenticationhandlertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{434753FE-6DD5-4BF7-B078-629A250A9779}|LateralCms.Tests\\LateralCms.Tests.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.tests\\services\\cmseventservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{434753FE-6DD5-4BF7-B078-629A250A9779}|LateralCms.Tests\\LateralCms.Tests.csproj|solutionrelative:lateralcms.tests\\services\\cmseventservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FBF416E2-45F9-404A-85BA-7C31F319B5C8}|LateralCms.Application\\LateralCms.Application.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.application\\services\\cmseventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FBF416E2-45F9-404A-85BA-7C31F319B5C8}|LateralCms.Application\\LateralCms.Application.csproj|solutionrelative:lateralcms.application\\services\\cmseventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.api\\controllers\\cmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|solutionrelative:lateralcms.api\\controllers\\cmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FBF416E2-45F9-404A-85BA-7C31F319B5C8}|LateralCms.Application\\LateralCms.Application.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.application\\services\\cmseventprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FBF416E2-45F9-404A-85BA-7C31F319B5C8}|LateralCms.Application\\LateralCms.Application.csproj|solutionrelative:lateralcms.application\\services\\cmseventprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.api\\controllers\\cmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|solutionrelative:lateralcms.api\\controllers\\cmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.api\\backgroundservices\\cmseventqueueworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|solutionrelative:lateralcms.api\\backgroundservices\\cmseventqueueworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.api\\controllers\\entitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66DB3465-2639-1EB6-8DE2-D602715637DC}|LateralCms.Api\\LateralCms.Api.csproj|solutionrelative:lateralcms.api\\controllers\\entitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBF416E2-45F9-404A-85BA-7C31F319B5C8}|LateralCms.Application\\LateralCms.Application.csproj|c:\\users\\lrpsa\\source\\repos\\lateral-assessment\\src\\lateralcms\\lateralcms.application\\services\\cmseventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBF416E2-45F9-404A-85BA-7C31F319B5C8}|LateralCms.Application\\LateralCms.Application.csproj|solutionrelative:lateralcms.application\\services\\cmseventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,45 +59,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CmsEventWorker.cs",
-              "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\BackgroundServices\\CmsEventWorker.cs",
-              "RelativeDocumentMoniker": "LateralCms.Api\\BackgroundServices\\CmsEventWorker.cs",
-              "ToolTip": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\BackgroundServices\\CmsEventWorker.cs",
-              "RelativeToolTip": "LateralCms.Api\\BackgroundServices\\CmsEventWorker.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAABFAAAAAAAAAA==",
+              "Title": "BasicAuthenticationHandlerTests.cs",
+              "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Tests\\Authentication\\BasicAuthenticationHandlerTests.cs",
+              "RelativeDocumentMoniker": "LateralCms.Tests\\Authentication\\BasicAuthenticationHandlerTests.cs",
+              "ToolTip": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Tests\\Authentication\\BasicAuthenticationHandlerTests.cs",
+              "RelativeToolTip": "LateralCms.Tests\\Authentication\\BasicAuthenticationHandlerTests.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T13:59:10.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CmsEventServiceTests.cs",
+              "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Tests\\Services\\CmsEventServiceTests.cs",
+              "RelativeDocumentMoniker": "LateralCms.Tests\\Services\\CmsEventServiceTests.cs",
+              "ToolTip": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Tests\\Services\\CmsEventServiceTests.cs",
+              "RelativeToolTip": "LateralCms.Tests\\Services\\CmsEventServiceTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T13:49:21.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CmsEventQueueWorker.cs",
+              "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\BackgroundServices\\CmsEventQueueWorker.cs",
+              "RelativeDocumentMoniker": "LateralCms.Api\\BackgroundServices\\CmsEventQueueWorker.cs",
+              "ToolTip": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\BackgroundServices\\CmsEventQueueWorker.cs",
+              "RelativeToolTip": "LateralCms.Api\\BackgroundServices\\CmsEventQueueWorker.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-19T19:22:44.963Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CmsController.cs",
               "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\Controllers\\CmsController.cs",
               "RelativeDocumentMoniker": "LateralCms.Api\\Controllers\\CmsController.cs",
               "ToolTip": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\Controllers\\CmsController.cs",
               "RelativeToolTip": "LateralCms.Api\\Controllers\\CmsController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACUAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-19T18:54:35.392Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "CmsEventService.cs",
               "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Application\\Services\\CmsEventService.cs",
               "RelativeDocumentMoniker": "LateralCms.Application\\Services\\CmsEventService.cs",
               "ToolTip": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Application\\Services\\CmsEventService.cs",
               "RelativeToolTip": "LateralCms.Application\\Services\\CmsEventService.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAawD0AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAD4AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-19T18:37:34.387Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "EntityController.cs",
               "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\Controllers\\EntityController.cs",
               "RelativeDocumentMoniker": "LateralCms.Api\\Controllers\\EntityController.cs",
@@ -102,20 +136,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "CmsEventProcessor.cs",
               "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Application\\Services\\CmsEventProcessor.cs",
               "RelativeDocumentMoniker": "LateralCms.Application\\Services\\CmsEventProcessor.cs",
               "ToolTip": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Application\\Services\\CmsEventProcessor.cs",
               "RelativeToolTip": "LateralCms.Application\\Services\\CmsEventProcessor.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAWwBUAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-19T18:33:09.536Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\Program.cs",
               "RelativeDocumentMoniker": "LateralCms.Api\\Program.cs",
@@ -128,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "PostEventRequest.cs",
               "DocumentMoniker": "C:\\Users\\lrpsa\\source\\repos\\lateral-assessment\\src\\LateralCms\\LateralCms.Api\\Contracts\\Requests\\PostEventRequest.cs",
               "RelativeDocumentMoniker": "LateralCms.Api\\Contracts\\Requests\\PostEventRequest.cs",

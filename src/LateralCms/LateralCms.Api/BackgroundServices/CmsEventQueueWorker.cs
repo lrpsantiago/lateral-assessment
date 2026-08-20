@@ -3,16 +3,16 @@ using LateralCms.Application.Services;
 
 namespace LateralCms.Api.BackgroundServices;
 
-public sealed class CmsEventWorker : BackgroundService
+public sealed class CmsEventQueueWorker : BackgroundService
 {
     private readonly ICmsEventQueue _queue;
     private readonly IServiceScopeFactory _scopeFactory;
-    private readonly ILogger<CmsEventWorker> _logger;
+    private readonly ILogger<CmsEventQueueWorker> _logger;
 
-    public CmsEventWorker(
+    public CmsEventQueueWorker(
         ICmsEventQueue queue,
         IServiceScopeFactory scopeFactory,
-        ILogger<CmsEventWorker> logger)
+        ILogger<CmsEventQueueWorker> logger)
     {
         _queue = queue;
         _scopeFactory = scopeFactory;

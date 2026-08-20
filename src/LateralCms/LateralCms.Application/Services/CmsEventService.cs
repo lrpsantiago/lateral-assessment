@@ -26,7 +26,8 @@ public sealed class CmsEventService : ICmsEventService
         _mapper = mapper;
     }
 
-    public async Task<EventReceivalOutput> ReceiveAsync(IEnumerable<CmsEventInput> input, CancellationToken cancellationToken = default)
+    public async Task<EventReceivalOutput> ReceiveAsync(IEnumerable<CmsEventInput> input,
+        CancellationToken cancellationToken = default)
     {
         var events = input
             .Select(x => _mapper.Map<CmsEvent>(x))

@@ -54,7 +54,7 @@ builder.Services.AddSingleton<ICmsEventQueue, CmsEventQueue>();
 builder.Services.AddScoped<ICmsEventService, CmsEventService>();
 builder.Services.AddScoped<ICmsEntityService, CmsEntityService>();
 builder.Services.AddScoped<ICmsEventProcessor, CmsEventProcessor>();
-builder.Services.AddHostedService<CmsEventWorker>();
+builder.Services.AddHostedService<CmsEventQueueWorker>();
 
 InitializeDatabase(builder);
 
