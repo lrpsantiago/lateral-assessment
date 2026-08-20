@@ -3,16 +3,16 @@ using LateralCms.Application.Services;
 
 namespace LateralCms.Api.BackgroundServices;
 
-public sealed class CmsEventBatchWorker : BackgroundService
+public sealed class CmsEventWorker : BackgroundService
 {
     private readonly ICmsEventQueue _queue;
     private readonly IServiceScopeFactory _scopeFactory;
-    private readonly ILogger<CmsEventBatchWorker> _logger;
+    private readonly ILogger<CmsEventWorker> _logger;
 
-    public CmsEventBatchWorker(
+    public CmsEventWorker(
         ICmsEventQueue queue,
         IServiceScopeFactory scopeFactory,
-        ILogger<CmsEventBatchWorker> logger)
+        ILogger<CmsEventWorker> logger)
     {
         _queue = queue;
         _scopeFactory = scopeFactory;
@@ -25,13 +25,14 @@ public sealed class CmsEventBatchWorker : BackgroundService
         {
             try
             {
-                await using var scope =
-                    _scopeFactory.CreateAsyncScope();
-
-                var processor = scope.ServiceProvider
-                    .GetRequiredService<ICmsEventProcessor>();
+                await using var scope = _scopeFactory.CreateAsyncScope();
+                var processor = scope.ServiceProvider.GetRequiredService<ICmsEventProcessor>();
+                
+                _logger.LogInformation($"Event {eventId} process started...");
 
                 await processor.ProcessAsync(eventId, stoppingToken);
+
+                _logger.LogInformation($"Event {eventId} SUCCEED!");
             }
             catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
             {
@@ -39,10 +40,7 @@ public sealed class CmsEventBatchWorker : BackgroundService
             }
             catch (Exception exception)
             {
-                _logger.LogError(
-                    exception,
-                    "Failed to process CMS event batch {BatchId}.",
-                    eventId);
+                _logger.LogError(exception, $"Event {eventId} FAILED:", eventId);
             }
         }
     }

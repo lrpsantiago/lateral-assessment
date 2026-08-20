@@ -48,33 +48,22 @@ public sealed class CmsEventProcessor : ICmsEventProcessor
         }
     }
 
-    private async Task ProcessPendingEventAsync(CmsEvent cmsEvent, DateTime processStart, CancellationToken cancellationToken)
+    private async Task ProcessPendingEventAsync(CmsEvent cmsEvent, DateTime processStart,
+        CancellationToken cancellationToken)
     {
-        await using var transaction =
-            await _unitOfWork.BeginTransactionAsync(cancellationToken);
+        cmsEvent.Status = EventStatus.Processing;
+        cmsEvent.ProcessStart = processStart;
+        cmsEvent.ProcessEnd = null;
+        cmsEvent.LastErrorMessage = null;
 
-        try
-        {
-            cmsEvent.Status = EventStatus.Processing;
-            cmsEvent.ProcessStart = processStart;
-            cmsEvent.ProcessEnd = null;
-            cmsEvent.LastErrorMessage = null;
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+        await _eventService.ProcessAsync(cmsEvent, cancellationToken);
 
-            await _eventService.ProcessAsync(cmsEvent, cancellationToken);
+        cmsEvent.Status = EventStatus.Completed;
+        cmsEvent.ProcessEnd = DateTime.UtcNow;
 
-            cmsEvent.Status = EventStatus.Completed;
-            cmsEvent.ProcessEnd = DateTime.UtcNow;
-
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-            await transaction.CommitAsync(cancellationToken);
-        }
-        catch
-        {
-            await transaction.RollbackAsync(CancellationToken.None);
-            throw;
-        }
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
     private Task<CmsEvent?> LoadEventAsync(Guid eventId, CancellationToken cancellationToken)

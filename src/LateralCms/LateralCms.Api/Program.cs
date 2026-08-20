@@ -15,8 +15,23 @@ using Mapster;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var logDirectory = Path.Combine(builder.Environment.ContentRootPath, "Logs");
+Directory.CreateDirectory(logDirectory);
+
+builder.Host.UseSerilog((context, services, loggerConfiguration) => loggerConfiguration
+    .ReadFrom.Configuration(context.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File(
+        Path.Combine(logDirectory, "lateralcms-.log"),
+        rollingInterval: RollingInterval.Day,
+        retainedFileCountLimit: 14,
+        shared: true));
 
 // Add services to the container.
 var config = TypeAdapterConfig.GlobalSettings;
@@ -39,7 +54,7 @@ builder.Services.AddSingleton<ICmsEventQueue, CmsEventQueue>();
 builder.Services.AddScoped<ICmsEventService, CmsEventService>();
 builder.Services.AddScoped<ICmsEntityService, CmsEntityService>();
 builder.Services.AddScoped<ICmsEventProcessor, CmsEventProcessor>();
-builder.Services.AddHostedService<CmsEventBatchWorker>();
+builder.Services.AddHostedService<CmsEventWorker>();
 
 InitializeDatabase(builder);
 
@@ -47,6 +62,7 @@ var app = builder.Build();
 
 await ApplyDatabaseMigrationAsync(app);
 
+app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
