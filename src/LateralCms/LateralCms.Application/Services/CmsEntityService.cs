@@ -74,7 +74,6 @@ public class CmsEntityService : ICmsEntityService
         CancellationToken cancellationToken = default)
     {
         parameters.Validate();
-        ValidatePayload(parameters, "add");
 
         var exists = await _unitOfWork.CmsEntities
             .AnyAsync(x => x.Id == parameters.EntityId, cancellationToken);
@@ -126,7 +125,6 @@ public class CmsEntityService : ICmsEntityService
         CancellationToken cancellationToken = default)
     {
         parameters.Validate();
-        ValidatePayload(parameters, "update");
 
         var entity = await GetValidatedEntityWithInclusionsAsync(parameters.EntityId, cancellationToken);
         var expectedVersion = entity!.LatestVersionId + 1;
@@ -288,8 +286,6 @@ public class CmsEntityService : ICmsEntityService
             ? "publish"
             : "unpublish";
 
-        ValidatePayload(parameters, eventType);
-
         var entityId = parameters.EntityId!;
         var versionNumber = parameters.Version.GetValueOrDefault();
         var now = DateTime.UtcNow;
@@ -359,14 +355,6 @@ public class CmsEntityService : ICmsEntityService
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);
-    }
-
-    private static void ValidatePayload(CmsEventParameters parameters, string eventType)
-    {
-        if (string.IsNullOrWhiteSpace(parameters.Payload))
-        {
-            throw new DomainException($"The 'Payload' is required for {eventType} events.");
-        }
     }
 
     #endregion

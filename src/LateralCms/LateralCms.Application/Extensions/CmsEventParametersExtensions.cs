@@ -1,4 +1,5 @@
 using LateralCms.Application.Services.Contracts;
+using LateralCms.Domain.Enumerations;
 using LateralCms.Domain.Exceptions;
 
 namespace LateralCms.Application.Extensions;
@@ -22,6 +23,11 @@ public static class CmsEventParametersExtensions
         if (source.Version <= 0)
         {
             throw new DomainException("The version must be greater than zero.");
+        }
+
+        if (string.IsNullOrWhiteSpace(source.Payload))
+        {
+            throw new DomainException($"The 'Payload' is required.");
         }
 
         if (source.Timestamp == null)
