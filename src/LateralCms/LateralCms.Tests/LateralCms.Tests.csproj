@@ -24,4 +24,8 @@
     <ProjectReference Include="..\LateralCms.Api\LateralCms.Api.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>

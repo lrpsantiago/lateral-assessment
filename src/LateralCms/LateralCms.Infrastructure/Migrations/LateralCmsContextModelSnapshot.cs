@@ -119,6 +119,9 @@ namespace LateralCms.Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime?>("Timestamp")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Type")
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
@@ -209,11 +212,13 @@ namespace LateralCms.Infrastructure.Migrations
 
             modelBuilder.Entity("LateralCms.Domain.Entities.CmsEntityVisibilityOverride", b =>
                 {
-                    b.HasOne("LateralCms.Domain.Entities.CmsEntity", null)
-                        .WithOne()
+                    b.HasOne("LateralCms.Domain.Entities.CmsEntity", "CmsEntity")
+                        .WithOne("VisibilityOverride")
                         .HasForeignKey("LateralCms.Domain.Entities.CmsEntityVisibilityOverride", "CmsEntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CmsEntity");
                 });
 
             modelBuilder.Entity("LateralCms.Domain.Entities.User", b =>
@@ -230,6 +235,8 @@ namespace LateralCms.Infrastructure.Migrations
             modelBuilder.Entity("LateralCms.Domain.Entities.CmsEntity", b =>
                 {
                     b.Navigation("Versions");
+
+                    b.Navigation("VisibilityOverride");
                 });
 
             modelBuilder.Entity("LateralCms.Domain.Entities.UserRole", b =>

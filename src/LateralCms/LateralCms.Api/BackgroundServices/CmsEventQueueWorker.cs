@@ -27,7 +27,7 @@ public sealed class CmsEventQueueWorker : BackgroundService
             {
                 await using var scope = _scopeFactory.CreateAsyncScope();
                 var processor = scope.ServiceProvider.GetRequiredService<ICmsEventProcessor>();
-                
+
                 _logger.LogInformation($"Event {eventId} process started...");
 
                 await processor.ProcessAsync(eventId, stoppingToken);

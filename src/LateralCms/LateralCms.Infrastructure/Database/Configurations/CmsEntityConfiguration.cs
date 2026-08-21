@@ -42,10 +42,5 @@ public class CmsEntityConfiguration : IEntityTypeConfiguration<CmsEntity>
             .HasForeignKey<CmsEntity>(entity => new { entity.Id, entity.PublishedVersionId })
             .HasPrincipalKey<CmsEntityVersion>(version => new { version.EntityId, version.Version })
             .OnDelete(DeleteBehavior.NoAction);
-
-        //builder.HasMany(x => x.Events)
-        //    .WithOne(e => e.Entity)
-        //    .HasForeignKey(x => x.EntityId)
-        //    .OnDelete(DeleteBehavior.NoAction);
     }
 }

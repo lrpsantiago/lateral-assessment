@@ -4,7 +4,7 @@ public enum EventType
 {
     Add,
     Update,
-    Delete,
     Publish,
-    Unpublish
+    Unpublish,
+    Delete
 }

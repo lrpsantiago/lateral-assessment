@@ -25,8 +25,8 @@ public class CmsEntityVisibilityOverrideConfiguration : IEntityTypeConfiguration
         builder.Property(visibilityOverride => visibilityOverride.UpdatedBy)
             .HasMaxLength(150);
 
-        builder.HasOne<CmsEntity>()
-            .WithOne()
+        builder.HasOne(visibilityOverride => visibilityOverride.CmsEntity)
+            .WithOne(entity => entity.VisibilityOverride)
             .HasForeignKey<CmsEntityVisibilityOverride>(visibilityOverride => visibilityOverride.CmsEntityId)
             .OnDelete(DeleteBehavior.Cascade);
     }

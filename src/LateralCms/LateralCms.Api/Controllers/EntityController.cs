@@ -38,49 +38,12 @@ public class EntityController : LateralCmsController
         return Ok(publishedEntities);
     }
 
-    [HttpPost]
+    [HttpPut("visibility")]
     [Authorize(Roles = "admin")]
-    public async Task<IActionResult> AddEntityAsync([FromBody] AddCmsEntityRequest request)
+    public async Task<IActionResult> SetVisbilityAsync([FromBody] SetEntityVisibilityRequest request)
     {
-        var input = _mapper.Map<CmsEntityInput>(request);
-        var output = await _entityService.AddEntityAsync(input);
-
-        return Ok(output);
-    }
-
-    [HttpPut]
-    [Authorize(Roles = "admin")]
-    public async Task<IActionResult> UpdateEntityAsync([FromBody] UpdateCmsEntityRequest request)
-    {
-        var input = _mapper.Map<EntityPayloadUpdateInput>(request);
-        var output = await _entityService.UpdateEntityAsync(input);
-
-        return Ok(output);
-    }
-
-    [HttpDelete]
-    [Authorize(Roles = "admin")]
-    public async Task<IActionResult> DeleteEntityAsync([FromQuery] string? id)
-    {
-        await _entityService.DeleteEntityAsync(id);
-
-        return NoContent();
-    }
-
-    [HttpPatch("publish")]
-    [Authorize(Roles = "admin")]
-    public async Task<IActionResult> PublishEntityAsync([FromQuery] string? id, [FromQuery] int? version = null)
-    {
-        await _entityService.PublishEntityAsync(id, version);
-
-        return NoContent();
-    }
-
-    [HttpPatch("unpublish")]
-    [Authorize(Roles = "admin")]
-    public async Task<IActionResult> UnpublishEntityAsync([FromQuery] string? id)
-    {
-        await _entityService.UnpublishEntityAsync(id);
+        var currentUser = User.Identity?.Name;
+        await _entityService.SetVisibilityAsync(request.Id, request.IsVisible, currentUser);
 
         return NoContent();
     }

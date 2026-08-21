@@ -16,6 +16,8 @@ public class CmsEvent
 
     public int? Version { get; set; }
 
+    public DateTime? Timestamp { get; set; }
+
     public DateTime ReceivedAt { get; set; }
 
     public DateTime? ProcessStart { get; set; }

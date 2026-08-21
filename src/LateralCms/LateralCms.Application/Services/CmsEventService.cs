@@ -1,8 +1,10 @@
+using LateralCms.Application.Extensions;
 using LateralCms.Application.Interfaces.Persistence;
 using LateralCms.Application.Interfaces.Queue;
 using LateralCms.Application.Services.Contracts;
 using LateralCms.Domain.Entities;
 using LateralCms.Domain.Enumerations;
+using LateralCms.Domain.Exceptions;
 using MapsterMapper;
 
 namespace LateralCms.Application.Services;
@@ -81,9 +83,6 @@ public sealed class CmsEventService : ICmsEventService
                 await HandleUpdateEventAsync(cmsEvent, cancellationToken);
                 break;
 
-            case EventType.Delete:
-                await HandleDeleteEventAsync(cmsEvent, cancellationToken);
-                break;
 
             case EventType.Publish:
                 await HandlePublishEventAsync(cmsEvent, cancellationToken);
@@ -91,6 +90,10 @@ public sealed class CmsEventService : ICmsEventService
 
             case EventType.Unpublish:
                 await HandleUnpublishEventAsync(cmsEvent, cancellationToken);
+                break;
+
+            case EventType.Delete:
+                await HandleDeleteEventAsync(cmsEvent, cancellationToken);
                 break;
 
             default:
@@ -101,28 +104,30 @@ public sealed class CmsEventService : ICmsEventService
 
     private async Task HandleAddEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
     {
-        var input = _mapper.Map<CmsEntityInput>(cmsEvent);
-        await _entityService.AddEntityAsync(input, cancellationToken);
+        var parameters = _mapper.Map<CmsEventParameters>(cmsEvent);
+        await _entityService.AddEntityAsync(parameters, cancellationToken);
     }
 
     private async Task HandleUpdateEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
     {
-        var input = _mapper.Map<EntityPayloadUpdateInput>(cmsEvent);
-        await _entityService.UpdateEntityAsync(input, cancellationToken);
+        var parameters = _mapper.Map<CmsEventParameters>(cmsEvent);
+        await _entityService.UpdateEntityAsync(parameters, cancellationToken);
+    }
+
+    private async Task HandlePublishEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
+    {
+        var parameters = _mapper.Map<CmsEventParameters>(cmsEvent);
+        await _entityService.PublishEntityAsync(parameters, cancellationToken);
+    }
+
+    private async Task HandleUnpublishEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
+    {
+        var parameters = _mapper.Map<CmsEventParameters>(cmsEvent);
+        await _entityService.UnpublishEntityAsync(parameters, cancellationToken);
     }
 
     private async Task HandleDeleteEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
     {
         await _entityService.DeleteEntityAsync(cmsEvent.EntityId, cancellationToken);
-    }
-
-    private async Task HandlePublishEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
-    {
-        await _entityService.PublishEntityAsync(cmsEvent.EntityId, cmsEvent.Version, cancellationToken);
-    }
-
-    private async Task HandleUnpublishEventAsync(CmsEvent cmsEvent, CancellationToken cancellationToken = default)
-    {
-        await _entityService.UnpublishEntityAsync(cmsEvent.EntityId, cancellationToken);
     }
 }

@@ -71,6 +71,14 @@ These credentials are stored in the source code for local assessment purposes an
 
 Most endpoints require HTTP Basic Authentication. With the API running, submit a sample event from a second terminal.
 
+The webhook accepts batches containing these CMS event types:
+
+- `publish`: stores the supplied snapshot and exposes that version to consumers.
+- `unPublish`: stores the supplied snapshot, including a version that was never published, and disables the entity without deleting its history.
+- `delete`: hard-deletes the entity and all of its stored versions.
+
+The service also accepts the scenario's `add` and `update` lifecycle events. They store an unpublished version; data only becomes consumer-visible after a `publish` event. Event names are case-insensitive, while IDs, timestamps, versions, and payloads are validated before a batch is accepted.
+
 ### Windows PowerShell
 
 ```powershell
@@ -80,9 +88,9 @@ $credentials = [Convert]::ToBase64String(
 
 $body = ConvertTo-Json -InputObject @(
     @{
-        type = "Add"
+        type = "publish"
         id = "example-1"
-        payload = '{"title":"Hello"}'
+        payload = @{ title = "Hello" }
         version = 1
         timestamp = (Get-Date).ToUniversalTime().ToString("o")
     }
@@ -101,7 +109,7 @@ Invoke-RestMethod `
 ```bash
 curl --user 'administrator:fb29ce7c-b3a5-4841-94ef-650085d774a3' \
   --header 'Content-Type: application/json' \
-  --data '[{"type":"Add","id":"example-1","payload":"{\"title\":\"Hello\"}","version":1,"timestamp":"2026-08-04T12:00:00Z"}]' \
+  --data '[{"type":"publish","id":"example-1","payload":{"title":"Hello"},"version":1,"timestamp":"2026-08-04T12:00:00Z"}]' \
   http://localhost:5205/api/cms/events
 ```
 

@@ -18,5 +18,5 @@ public class CmsEntity
 
     public virtual IEnumerable<CmsEntityVersion>? Versions { get; set; }
 
-    //public virtual IEnumerable<CmsEvent>? Events { get; set; }
+    public virtual CmsEntityVisibilityOverride? VisibilityOverride { get; set; }
 }
